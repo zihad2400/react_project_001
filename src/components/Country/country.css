@@ -1,11 +1,127 @@
-.country{
-    border: 2px solid salmon;
-    margin: 20px;
-    padding: 20px;
-    border-radius: 20px;
+/* ==========================================================================
+   Country Card Component Styling
+   ========================================================================== */
+
+.country {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 24px;
+    box-shadow: var(--shadow-sm);
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    position: relative;
+    overflow: hidden;
+    transition: transform var(--transition-normal),
+        box-shadow var(--transition-normal),
+        border-color var(--transition-normal);
 }
 
-.country-visited{
-    background-color: rgb(101, 12, 112);
-    
+/* Hover Effect */
+.country:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-lg);
+    border-color: var(--primary);
+}
+
+/* Image / Flag Styling */
+.country img {
+    width: 100%;
+    height: 160px;
+    object-fit: cover;
+    border-radius: calc(var(--radius) - 4px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    transition: transform var(--transition-normal);
+}
+
+.country:hover img {
+    transform: scale(1.02);
+}
+
+/* Typography Inside Card */
+.country h2 {
+    font-size: 1.35rem;
+    color: var(--heading);
+    margin-top: 8px;
+    margin-bottom: 4px;
+    font-weight: 600;
+}
+
+.country p {
+    font-size: 0.95rem;
+    color: var(--text);
+    margin-bottom: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* State: Visited Country Premium Look */
+.country-visited {
+    border-color: var(--success);
+    background: linear-gradient(to bottom right, var(--surface), rgba(34, 197, 94, 0.03));
+}
+
+.country-visited::before {
+    content: "✓ Visited";
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    background: var(--success);
+    color: white;
+    padding: 4px 12px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    border-radius: 20px;
+    box-shadow: 0 2px 8px rgba(34, 197, 94, 0.3);
+    z-index: 10;
+}
+
+/* Card Buttons Styling */
+.country button {
+    width: 100%;
+    padding: 10px 16px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    border-radius: 10px;
+    background: var(--primary);
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    margin-top: 4px;
+}
+
+.country button:hover {
+    background: var(--primary-hover);
+    transform: translateY(-2px);
+}
+
+.country button:active {
+    transform: translateY(0);
+}
+
+/* Visited Button Styles Switch */
+.country-visited button:first-of-type {
+    background: #e2e8f0;
+    color: #475569;
+}
+
+.country-visited button:first-of-type:hover {
+    background: #cbd5e1;
+}
+
+/* Secondary Button for Adding Flag */
+.country button:last-of-type {
+    background: transparent;
+    color: var(--primary);
+    border: 1.5px solid var(--primary);
+    box-shadow: none;
+}
+
+.country button:last-of-type:hover {
+    background: rgba(99, 102, 241, 0.05);
+    color: var(--primary-hover);
+    border-color: var(--primary-hover);
 }
