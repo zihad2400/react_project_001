@@ -12,9 +12,21 @@ function App() {
   
   return (
     <>
-     <Suspense fallback={<p>This is me and Zihad Bin Samsu....</p>}>
-            <Countries countriesPromise = {countriesPromise}></Countries>
-     </Suspense>
+                                       <Suspense
+                       fallback={
+                   <div className="loading">
+                    <div className="spinner"></div>
+
+                 <h2 className="dots">
+                   🌍 Loading Countries
+                    </h2>
+
+            <p>Please wait while we fetch the latest country data...</p>
+      </div>
+  }
+>
+  <Countries countriesPromise={countriesPromise} />
+</Suspense>
     </>
   )
 }
