@@ -1,89 +1,124 @@
-/* ===========================
-   Premium Loading Screen
-=========================== */
+/* ==================================================
+                Premium Loading Screen
+        Fully Responsive | Modern UI | Animated
+================================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
 .loading {
     width: 100%;
-    height: 100vh;
+    min-height: 100vh;
     background: linear-gradient(135deg, #0f172a, #1e293b, #334155);
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    overflow: hidden;
     position: relative;
+    overflow: hidden;
+    padding: 20px;
 }
 
-/* Animated Background */
+/* ===========================
+        Animated Background
+=========================== */
+
 .loading::before,
 .loading::after {
     content: "";
     position: absolute;
-    width: 300px;
-    height: 300px;
+    width: 320px;
+    height: 320px;
     border-radius: 50%;
     filter: blur(120px);
-    opacity: 0.5;
+    opacity: .45;
+    z-index: 0;
     animation: moveGlow 8s ease-in-out infinite alternate;
 }
 
 .loading::before {
     background: #38bdf8;
-    top: -80px;
-    left: -80px;
+    top: -120px;
+    left: -120px;
 }
 
 .loading::after {
     background: #8b5cf6;
-    bottom: -80px;
-    right: -80px;
+    bottom: -120px;
+    right: -120px;
     animation-delay: 2s;
 }
 
-/* Spinner */
+/* ===========================
+            Spinner
+=========================== */
+
 .spinner {
     width: 95px;
     height: 95px;
-    border: 8px solid rgba(255, 255, 255, 0.12);
+    border: 8px solid rgba(255, 255, 255, .12);
     border-top: 8px solid #38bdf8;
     border-right: 8px solid #8b5cf6;
     border-radius: 50%;
-    animation: spin 1.2s linear infinite, pulse 2s ease-in-out infinite;
+    animation:
+        spin 1.2s linear infinite,
+        pulse 2s ease-in-out infinite;
     box-shadow: 0 0 25px rgba(56, 189, 248, .7);
+    position: relative;
+    z-index: 2;
 }
 
-/* Heading */
+/* ===========================
+          Heading
+=========================== */
+
 .loading h2 {
     margin-top: 30px;
     color: #fff;
     font-size: 2rem;
-    font-weight: bold;
+    font-weight: 700;
     letter-spacing: 3px;
-    text-shadow: 0 0 15px rgba(255, 255, 255, .3);
+    text-align: center;
+    text-shadow: 0 0 15px rgba(255, 255, 255, .25);
     animation: fadeUp 1.5s ease-in-out infinite alternate;
+    position: relative;
+    z-index: 2;
 }
 
-/* Paragraph */
+/* ===========================
+        Description
+=========================== */
+
 .loading p {
     margin-top: 15px;
     color: #cbd5e1;
     font-size: 18px;
-    letter-spacing: 1px;
+    text-align: center;
+    line-height: 1.7;
+    max-width: 550px;
     animation: fade 2s infinite;
+    position: relative;
+    z-index: 2;
 }
 
-/* Loading Dots */
+/* ===========================
+         Loading Dots
+=========================== */
+
 .dots::after {
     content: "";
     animation: dots 1.5s infinite;
 }
 
-/* ===========================
-        Animations
-=========================== */
+/* ==================================================
+                Animations
+================================================== */
 
 @keyframes spin {
-    100% {
+    to {
         transform: rotate(360deg);
     }
 }
@@ -109,7 +144,7 @@
     }
 
     to {
-        transform: translateY(-5px);
+        transform: translateY(-6px);
         opacity: 1;
     }
 }
@@ -127,6 +162,7 @@
 }
 
 @keyframes dots {
+
     0% {
         content: "";
     }
@@ -142,9 +178,11 @@
     100% {
         content: "...";
     }
+
 }
 
 @keyframes moveGlow {
+
     from {
         transform: translate(0, 0) scale(1);
     }
@@ -152,4 +190,119 @@
     to {
         transform: translate(60px, -40px) scale(1.3);
     }
+
+}
+
+/* ==================================================
+            Responsive - Laptop
+================================================== */
+
+@media (max-width:992px) {
+
+    .spinner {
+        width: 85px;
+        height: 85px;
+        border-width: 7px;
+    }
+
+    .loading h2 {
+        font-size: 1.8rem;
+    }
+
+    .loading p {
+        font-size: 17px;
+    }
+
+}
+
+/* ==================================================
+            Responsive - Tablet
+================================================== */
+
+@media (max-width:768px) {
+
+    .spinner {
+        width: 75px;
+        height: 75px;
+        border-width: 6px;
+    }
+
+    .loading h2 {
+        font-size: 1.6rem;
+        letter-spacing: 2px;
+        padding: 0 15px;
+    }
+
+    .loading p {
+        font-size: 15px;
+        max-width: 90%;
+        padding: 0 10px;
+    }
+
+    .loading::before,
+    .loading::after {
+        width: 220px;
+        height: 220px;
+        filter: blur(90px);
+    }
+
+}
+
+/* ==================================================
+            Responsive - Mobile
+================================================== */
+
+@media (max-width:480px) {
+
+    .loading {
+        padding: 20px;
+    }
+
+    .spinner {
+        width: 60px;
+        height: 60px;
+        border-width: 5px;
+    }
+
+    .loading h2 {
+        font-size: 1.3rem;
+        letter-spacing: 1px;
+        margin-top: 20px;
+    }
+
+    .loading p {
+        font-size: 14px;
+        line-height: 1.6;
+        max-width: 95%;
+    }
+
+    .loading::before,
+    .loading::after {
+        width: 150px;
+        height: 150px;
+        filter: blur(70px);
+    }
+
+}
+
+/* ==================================================
+          Large Desktop / 2K / 4K
+================================================== */
+
+@media (min-width:1440px) {
+
+    .spinner {
+        width: 115px;
+        height: 115px;
+        border-width: 9px;
+    }
+
+    .loading h2 {
+        font-size: 2.6rem;
+    }
+
+    .loading p {
+        font-size: 20px;
+    }
+
 }
